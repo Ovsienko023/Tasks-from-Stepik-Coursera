@@ -1,6 +1,0 @@
-[
-  "test_Temp.py::test_success",
-  "test_Temp.py::test_today[Temperature in Moscow, today: ?\\u2103]",
-  "test_Temp.py::test_today[Temperature in Moscow, today: {}\\u2103]",
-  "test_Temp.py::test_today[35]"
-]

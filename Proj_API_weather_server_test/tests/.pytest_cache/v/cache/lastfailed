@@ -1,0 +1,4 @@
+{
+  "test_Temp.py::test_today[Temperature in Moscow, today: ?\\u2103]": true,
+  "test_Temp.py::test_today[Temperature in Moscow, today: {}\\u2103]": true
+}
