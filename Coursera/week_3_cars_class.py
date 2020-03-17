@@ -8,10 +8,12 @@ class CarBase(object):
         self.brand = brand
         self.photo_file_name = photo_file_name
         self.carrying = float(carrying)
-
+    
     def get_photo_file_ext(self):
         _, ext = os.path.splitext(self.photo_file_name)
-        return ext
+        if ext in [".jpg", ".jpeg", ".png", ".gif"]:
+            return ext
+        
 
 
 class Car(CarBase):
@@ -29,15 +31,15 @@ class Truck(CarBase):
 
     def __init__(self, brand, photo_file_name, carrying, body_whl):
         super(Truck, self).__init__(brand, photo_file_name, carrying)
-        self.body_whl = body_whl or 0
+        self.body_whl = body_whl
         try:
             self.body_length, self.body_width, self.body_height = \
-                map(float, self.body_whl.split('x')) if self.body_whl else [0.0 for _ in range()]
+                map(float, self.body_whl.split('x')) if self.body_whl else [0.0 for _ in range(2)]
+            #print(self.body_length, self.body_width, self.body_height)
         except (ValueError, TypeError):
             self.body_length, self.body_width, self.body_height = (0.0, 0.0, 0.0)
+            self.body_whl = "0.0x0.0x0.0"
           
-
-
     def get_body_volume(self):
         return self.body_length * self.body_width * self.body_height
 
@@ -53,56 +55,35 @@ class SpecMachine(CarBase):
 
 def get_car_list(csv_filename):
     car_list_obj = []
-    csv.register_dialect('customcsv', delimiter=';', quoting=csv.QUOTE_NONE, quotechar='', escapechar='\\')
+    csv.register_dialect('customcsv', delimiter=';')
     with open(csv_filename, encoding='utf-8') as csv_file:
         reader = csv.reader(csv_file, 'customcsv')
         next(reader)
-        for row in reader:
-            
-            try:
-                row[0]
-            except:
-                continue
-            if row[0] == '':
-                car_list_obj.append([])
 
-            elif len(row) == 7:
-                
+        for row in reader:
+            if len(row) == 7 and row:        
                 car_type, brand, passenger_seats_count, photo_file_name, body_whl, carrying, extra = row
-                if car_type == 'car' and all((brand, photo_file_name)):
+
+                if car_type == 'car' and all((brand, photo_file_name, carrying)):
                     try:
-                        car_list_obj.append(Car(brand, photo_file_name, float(carrying), int(passenger_seats_count)))
+                        if Car(brand, photo_file_name, float(carrying), int(passenger_seats_count)).get_photo_file_ext():
+                            car_list_obj.append(Car(brand, photo_file_name, float(carrying), int(passenger_seats_count)))
                     except ValueError:
                         pass
-                elif car_type == 'truck' and all((brand, photo_file_name)):
+
+                elif car_type == 'truck' and all((brand, photo_file_name, carrying)):
                     try:
-                        car_list_obj.append(Truck(brand, photo_file_name, float(carrying), body_whl))
+                        if Truck(brand, photo_file_name, float(carrying), body_whl).get_photo_file_ext():
+                            car_list_obj.append(Truck(brand, photo_file_name, float(carrying), body_whl))                     
                     except ValueError:
                         pass
-                elif car_type == 'spec_machine' and all((brand, photo_file_name, extra)):
+
+                elif car_type == 'spec_machine' and all((brand, photo_file_name, carrying, extra)):
                     try:
-                        car_list_obj.append(SpecMachine(brand, photo_file_name, float(carrying), extra))
+                        if SpecMachine(brand, photo_file_name, float(carrying), extra).get_photo_file_ext():
+                            car_list_obj.append(SpecMachine(brand, photo_file_name, float(carrying), extra))
                     except ValueError:
-                        pass
-        # print()
-        # print(car_list_obj)
-        #print(car_list_obj)
+                        pass  
+                                
         car_list_obj = list(filter(None, car_list_obj))
     return car_list_obj
-
-a = get_car_list("cars.csv")
-# # #car = Truck('Toyota', 't2.jpeg', '3.0', '3.7x2x2.6x6')
-print(a)
-
-# print(a[0])
-
-# if [] in a:
-#     print("!")
-#     a = []
-#     print(a)
-
-
-# mylist = [[], ['a'], ['1']]
-
-# c = list(filter(None, mylist))
-# print(c)
