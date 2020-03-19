@@ -87,3 +87,5 @@ def get_car_list(csv_filename):
                                 
         car_list_obj = list(filter(None, car_list_obj))
     return car_list_obj
+
+get_car_list('cars.csv')
