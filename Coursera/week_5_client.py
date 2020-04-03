@@ -22,7 +22,7 @@ class Client:
         data = 'put {} {} {}\n'.format(metrica, numb_val, timestamp)
         self.sock.sendall(data.encode("utf8"))
         otvet = self.sock.recv(1024)
-        #print(otvet.decode("utf8"))
+        print(otvet.decode("utf8"))
         if otvet.decode('utf8') == "error\nwrong command\n\n":
             raise ClientError
 
@@ -71,9 +71,20 @@ class Client:
             raise ClientError("Error. Do not close the connection", err)
 
 ### TEST
-#client = Client("127.0.0.1", 10001)
-# #client.put("eardrum.memory", 4200000)
-# client.put('palm.cpu', 23.7, 1150864247)
-# print(client.get('palm.cpu'))
-# client.put("hi")
+client = Client("127.0.0.1", 8888)
+#client.put("eardrum.memory", 4200000)
+client.put('key6', 23.7, 1150864247)
+#print(client.get('*'))
+#print(client.get('key'))
+# client.put("hi")  
 #client = Client("127.0.0.1", 8888, timeout=15)
+# """
+# Это вспомогательный скрипт для тестирования сервера из задания на неделе 6.
+
+# Для запуска скрипта на локальном компьютере разместите рядом файл client.py,
+# где содержится код клиента, который открывается по прохождении задания
+# недели 5.
+
+# Сначала запускаете ваш сервер на адресе 127.0.0.1 и порту 8888, а затем
+# запускаете этот скрипт.
+# """
