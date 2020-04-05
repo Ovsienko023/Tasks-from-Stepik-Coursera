@@ -71,11 +71,13 @@ class Client:
             raise ClientError("Error. Do not close the connection", err)
 
 ### TEST
-# client = Client("127.0.0.1", 8888)
-# #client.put("eardrum.memory", 4200000)
-# #client.put('key6', 23.8, 1180864247)
-# print(client.get('*'))
-# print(client.get('wrong command test\n'))
+client = Client("127.0.0.1", 8888)
+#client.put("eardrum.memory", 4200000)
+client.put('key', 12.0, 1180864247)
+client.put('key', 12.0, 1180864247)
+client.put('key', 12.0, 1180864247)
+client.put('key', 12.0, 1180864247)
+print(client.get('key'))
+#print(client.get('wrong command test\n'))
 # # client.put("hi")  
 # #client = Client("127.0.0.1", 8888, timeout=15)
-
