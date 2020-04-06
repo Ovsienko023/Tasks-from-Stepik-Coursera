@@ -1,15 +1,17 @@
-a = [[1,2,], [3,4]]
+a = [[1,2], [3,4]]
 b = [[1,2], [3,4]]
 
 
 def matrixmult(a,b):
+    if len(a[0]) != len(b):
+        print('!!')
     sum_ = 0     
     new_matr=[]  
     final=[] 
     try:
-        for k in range(0, len(a)):
-            for j in range(0, len(b[0])):
-                for i in range(0, len(a[0])):
+        for k in range(len(a)):
+            for j in range(len(b[0])):
+                for i in range(len(a[0])):
                     sum_ = sum_ + a[k][i] * b[i][j]
                 new_matr.append(sum_)
                 sum_ = 0
@@ -20,3 +22,4 @@ def matrixmult(a,b):
     return final
 
 print(matrixmult(a, b))
+
