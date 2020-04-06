@@ -8,7 +8,7 @@ class Figure():
     def __init__(self, length, width):
         self.length = length
         self.width = width
-
+        
 
 class Square(Figure):
     name = 'square'
@@ -44,13 +44,16 @@ class Triangle(Figure):
         return s
 
 
-lst = [Square(5, 6), Circle(5), Triangle(3, 5, 6)]
+lst = [Square(5, 6), Circle(5), Triangle(3, 5, 6), int(5)]
 
 def area(lst):
-    for obj in lst:
-        if obj.name in obj.names:
-            fin = obj.get_area()
-            print(fin)
+    try:
+        for obj in lst:
+            if obj.name in obj.names:
+                fin = obj.get_area()
+                print(fin)
+    except AttributeError:
+        print("Такой фигуры нет")
 
 
 
