@@ -1,1 +1,2 @@
-alert("Hello world");
+var myName;
+alert(typeof myName);
