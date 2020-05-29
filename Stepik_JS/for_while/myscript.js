@@ -54,20 +54,14 @@ function printTest() {
 }
 
 
-// function my_function(n) {
-//     // final_srt = ''
-//     if (n < 1){
-//         // document.write(final_srt)
-//         return 'final_srts';
-//     }
-//     else {
-//         a = my_function(n-1)
-//         a = a + String(a)
-//     }
-// }
+function my_function(n) {
+    final_srt = '';
+    if (n < 1)
+        return '';
+    else
+        a = my_function(n-1);
+    final_srt = final_srt + String(n) + ' ';
+    return final_srt;
+}
 
-// console.log(my_function(5))
-// document.write(my_function(5))
-// my_function(5)
-
-// final_srt = final_srt + String(n) + ' '
+console.log(my_function(5))
