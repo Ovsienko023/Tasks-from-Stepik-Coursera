@@ -1,5 +1,13 @@
-var myPattern = new RegExp("q$")
+var inp_1 = 'Andsirdaarrevarariarewbutovearrmararan';
+var inp_2 = 'ar';
 
-var str = "http://www.stepik.org";
+function testRegExp(s, sub_s) {
+    var inp_1 = s;
+    var inp_2 = sub_s;
 
-console.log( str.search( /\/\/\// ));
+    var myPattern = new RegExp(inp_2, 'g');
+    var res = inp_1.match(myPattern);
+    return res;
+}
+
+
