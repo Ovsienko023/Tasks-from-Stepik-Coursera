@@ -8,7 +8,7 @@ CORS(app)
 def test_func():
     data = request.json
     print(data)
-    return '{"status": True}'# render_template('index.html')
+    return {"status": True} # render_template('index.html')
 
 
 app.run()

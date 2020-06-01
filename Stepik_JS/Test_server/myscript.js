@@ -1,6 +1,29 @@
-function sayHi() {
-    alert("Hi!")
+function test_post_request() {
+    document.write('!!!!!!')
+
+    var data = {
+        login: "Bob",
+        messages_: "I'm the best!"
+    }
+
+    var json = JSON.stringify(data);
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://127.0.0.1:5000/test");
+    request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    request.send(json);
+
+    // request.onload = () => console.log(request.status)
+    request.onload = () => console.log(request.response)
+    request.onload = function () {
+        if (request.status == "200") {
+            document.write('данные отправлены!!!');
+        }
 }
+}
+document.write(test_post_request())
+// function sayHi() {
+//     alert("Hi!")
+// }
 // window.sayHi();
 // alert(window.innerHeight);
 
@@ -48,23 +71,3 @@ function sayHi() {
 // var sendButton = document.search.send;
 // console.log(sendButton)
 // sendButton.addEventListener("click", sendForm);
-
-
-
-
-document.write('!!!!!!')
-
-var data = {
-    login: "Bob",
-    messages_: "I'm the best!"
-}
-
-var json = JSON.stringify(data);
-var request = new XMLHttpRequest();
-request.open("POST", "http://127.0.0.1:5000/test");
-request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-request.send(json);
-
-console.log(request)
-// typeof(request)
-// responseXML
