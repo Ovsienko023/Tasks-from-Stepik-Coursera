@@ -77,11 +77,11 @@ function sendForm(e){
 }
 }
 
-// var sendButton = document.search.send;
-// console.log(sendButton);
-// sendButton.addEventListener("click", sendForm);
+var sendButton = document.search.send;
+console.log(sendButton);
+sendButton.addEventListener("click", sendForm);
 
-console.log(document.search.send)
+// console.log(document.search.send)
 
 // for (let i in document.search)
 //     console.log(i)
