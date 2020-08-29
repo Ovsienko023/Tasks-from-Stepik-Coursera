@@ -1,0 +1,17 @@
+﻿p {
+    font-family: 'Roboto', 'Helvetica Nue', sans-serif;
+}
+
+img {
+    height: 200px;
+}
+
+/* Цвет фона */
+.card {
+    background: #333;
+}
+
+/* Подчеркнуть текст в кнопке */
+#button-go-to-top {
+    text-decoration: underline;
+  }
