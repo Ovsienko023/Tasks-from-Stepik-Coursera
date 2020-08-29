@@ -18,9 +18,10 @@ function test_post_request() {
         if (request.status == "200") {
             document.write('данные отправлены!!!');
         }
-}
+    }
 }
 document.write(test_post_request())
+
 // function sayHi() {
 //     alert("Hi!")
 // }
