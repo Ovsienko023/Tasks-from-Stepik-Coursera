@@ -3,15 +3,20 @@ function setup() {
     createCanvas(800,500);
     for (let i = 0; i < count; i+=1)
     {
+        // mass_x.push(x - i * 100)
         mass.push(randomInteger(30, 400))
     }
+    
 }
 
 let x = 100
 let y = 100
 let gravity = 0.1
 let yV = 0
+
 let mass = []
+let mass_x = []
+
 let height = 100
 let count = 1000
 
@@ -30,7 +35,6 @@ function draw(){
         drawBird()
         for (let i = 0; i < count; i+=1)
         {
-            // console.log(x - i * 100, mass[i])
             drawRect(x - i * 100, mass[i])
         }
     }
@@ -40,6 +44,7 @@ function draw(){
         gameInProgr = true
         window.location.reload();
     }
+    text('test text', 100, 100) //!!!!!!
     
 }
 
@@ -54,6 +59,7 @@ function drawBird(){
     stroke(250, 0, 0);
     ellipse(400, y, 10 * 2);
     x += 1
+    
     if (yV < 0)
         yV += gravity * 7 
     if (yV >= 0)
@@ -77,9 +83,7 @@ function chechScreen(){
         gameInProgr = false
     }
 }
-function checkBird(){
 
-}
 
 function randomInteger(min, max) {
     let rand = min + Math.random() * (max + 1 - min);
