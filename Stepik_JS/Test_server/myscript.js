@@ -18,10 +18,14 @@ function test_post_request() {
         if (request.status == "200") {
             document.write('данные отправлены!!!');
         }
+    }
 }
-}
+<<<<<<< HEAD
+document.write(test_post_request())
+=======
 // document.write(test_post_request())
 
+>>>>>>> 456a49bdaf2dbe7ffb6ccbbed0675092d8222f90
 
 // function sayHi() {
 //     alert("Hi!")
