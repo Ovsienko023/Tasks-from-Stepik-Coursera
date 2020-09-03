@@ -11,6 +11,7 @@ from flask_login import login_required
 @login_required
 def index():
     # print(current_user.is_authenticated)
+    # print(current_user.__dir__())
     if current_user.is_authenticated:
         print('зашел')
     return {"Status": True}
