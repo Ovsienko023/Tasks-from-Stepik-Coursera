@@ -49,3 +49,15 @@ class WrapperDB:
         if status:
             return True
         return False
+
+    def get_id(self, login, password):
+        data = self.coll_users.find_one({"user_name": login,
+                                         "password": password})
+        return data['_id']
+
+    def get_user(self, id):
+        data = self.coll_users.find_one({"_id": ObjectId(id)})
+        del data['friends']
+        return (data['user_name'], data['password'])
+
+# WrapperDB().get_user('5eec6d55918d3ee412fbbc3d')
