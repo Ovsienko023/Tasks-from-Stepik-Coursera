@@ -21,10 +21,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	files := pars_csv("people.csv")
+	files := parsCSV("people.csv")
 
 	for i := 0; i < 4; i++ {
-		create_fulder(files[i].region)
+		createFulder(files[i].region)
 	}
 
 	for i := 0; i < 4; i++ {
@@ -36,7 +36,7 @@ func main() {
 	}
 }
 
-func pars_csv(name_csv string) []Files {
+func parsCSV(name_csv string) []Files {
 	csvFile, _ := os.Open(name_csv)
 
 	reader := csv.NewReader(bufio.NewReader(csvFile))
@@ -59,7 +59,7 @@ func pars_csv(name_csv string) []Files {
 	return files
 }
 
-func create_fulder(dir_name string) {
+func createFulder(dir_name string) {
 	if _, err := os.Stat(dir_name); os.IsNotExist(err) {
 		err := os.Mkdir(dir_name, 0750)
 		if err != nil {
