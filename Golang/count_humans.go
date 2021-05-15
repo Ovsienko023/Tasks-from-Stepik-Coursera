@@ -2,16 +2,17 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"os"
 )
 
-func countHuman(fileName string) (map[]){
+func countHuman(fileName string) (map[string]int, error) {
 	human := map[string]int{}
 
 	file, err := os.Open(fileName)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 	scanner := bufio.NewScanner(file)
 
@@ -32,4 +33,9 @@ func countHuman(fileName string) (map[]){
 
 func main() {
 	humans, err := countHuman("votes.txt")
+	if err != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Println(humans)
+	}
 }
